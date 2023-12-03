@@ -1,0 +1,81 @@
+import re
+import csv
+import pandas as pd
+import os
+import PyPDF2
+output_directory  = r'C:\Users\Janet\OneDrive - The University of Chicago\Data_policy\final-project-janet'
+input_directory = r'C:\Users\Janet\OneDrive - The University of Chicago\Data_policy\final-project-janet\data\pdf_raw_data'
+
+
+
+def convert_pdfs_to_texts(file_names):
+    for file_name in file_names:
+        file_name = file_name + ".pdf"
+
+        path = os.path.join(input_directory, file_name)
+
+        output_file_name = os.path.splitext(file_name)[0] + '.txt'
+        output_path = os.path.join(input_directory, output_file_name)
+
+        with open(path, 'rb') as file:
+            reader = PyPDF2.PdfReader(file)
+
+            with open(output_path, 'w', encoding='utf-8') as text_file:
+                for page_num in range(len(reader.pages)):
+                    page = reader.pages[page_num]
+                    text_file.write(page.extract_text() + '\n')
+
+def clean_data(file_names):
+    for file_name in file_names:
+        txt_file_name = file_name + ".txt"
+        output_path = os.path.join(input_directory, txt_file_name)
+
+        with open(output_path, "r", encoding='utf-8') as file:
+            lines = file.readlines()
+
+        #remove rows without parathesis or ending with capital letter
+        with open(output_path, "w", encoding='utf-8') as file:
+            for line in lines:
+                if "(" in line or ")" in line:
+                    if line.strip() and line.strip()[-1].isupper():
+                        file.write(line)
+
+        df = pd.read_csv(output_path, header=None)
+        df_filtered = df[df.apply(lambda row: 'United States' in row[0], axis=1)]
+        df_filtered.to_csv(output_path, index=False, header=False)
+
+file_names = ['broadcasting', 'computer_consumerElectronics', 'printing_publishing']
+convert_pdfs_to_texts(file_names)
+clean_data(file_names)
+
+
+
+def extract_data_to_dataframe(file_path, input_directory):
+    txt_file_name = file_path + ".txt"
+    path = os.path.join(input_directory, txt_file_name)
+    data = []
+    with open(path, 'r', encoding='utf-8') as file:
+        for line in file:
+            match = re.search(r'\((.*?)\).*?United States\s+([A-Z]+\s*[A-Z]+)', line)
+            if match:
+                ticker = match.group(1)
+                exchange = match.group(2).replace(' ', '')
+                data.append({'Ticker': ticker, 'Exchange': exchange})
+
+    df = pd.DataFrame(data)
+    df['Industry'] = file_path
+    return df
+
+def process_files(file_names, input_directory):
+    dfs = []
+    for file_name in file_names:
+        df = extract_data_to_dataframe(file_name, input_directory)
+        dfs.append(df)
+
+    return pd.concat(dfs, ignore_index=True)
+
+final_df = process_files(file_names, input_directory)
+
+output_path = os.path.join(output_directory, 'output.csv')
+
+final_df.to_csv(output_path, index=False)
