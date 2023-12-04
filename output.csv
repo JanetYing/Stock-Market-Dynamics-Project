@@ -1,4 +1,4 @@
-Ticker,Exchange,Industry,Sector
+ticker,exchange,industry,sector
 SAYFF,OOTC,businessServices,businessConsumer_services
 FRRFF,OOTC,businessServices,businessConsumer_services
 ABM,XNYS,businessServices,businessConsumer_services

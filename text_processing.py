@@ -62,10 +62,10 @@ def extract_data_to_dataframe(file_path, input_directory):
             if match:
                 ticker = match.group(1)
                 exchange = match.group(2).replace(' ', '')
-                data.append({'Ticker': ticker, 'Exchange': exchange})
+                data.append({'ticker': ticker, 'exchange': exchange})
 
     df = pd.DataFrame(data)
-    df['Industry'] = file_path
+    df['industry'] = file_path
     return df
 
 def process_files(file_names, input_directory):
@@ -84,12 +84,12 @@ technology = ['computer_consumerElectronics', 'emerging_technologies', 'internet
 
 # Use numpy.select to assign the new sector values
 conditions = [
-    final_df['Industry'].isin(business_consumer_services),
-    final_df['Industry'].isin(technology)
+    final_df['industry'].isin(business_consumer_services),
+    final_df['industry'].isin(technology)
 ]
 choices = ['businessConsumer_services', 'technology']
 
-final_df['Sector'] = np.select(conditions, choices, default='Other')
+final_df['sector'] = np.select(conditions, choices, default='Other')
 
 output_path = os.path.join(output_directory, 'output.csv')
 
