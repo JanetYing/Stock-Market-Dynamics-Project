@@ -1,6 +1,7 @@
 import re
 import csv
 import pandas as pd
+import numpy as np
 import os
 import PyPDF2
 output_directory  = r'C:\Users\Janet\OneDrive - The University of Chicago\Data_policy\final-project-janet'
@@ -44,7 +45,8 @@ def clean_data(file_names):
         df_filtered = df[df.apply(lambda row: 'United States' in row[0], axis=1)]
         df_filtered.to_csv(output_path, index=False, header=False)
 
-file_names = ['broadcasting', 'computer_consumerElectronics', 'printing_publishing']
+file_names = ['businessServices','computer_services','consumer_services','diversified_holding','general_services' ,'shell_companies', #sector -- business/consumer services
+              'computer_consumerElectronics', 'emerging_technologies','internet_online','networking','semiconductors','software' ]#sector -- technology
 convert_pdfs_to_texts(file_names)
 clean_data(file_names)
 
@@ -74,8 +76,22 @@ def process_files(file_names, input_directory):
 
     return pd.concat(dfs, ignore_index=True)
 
+
 final_df = process_files(file_names, input_directory)
+
+business_consumer_services = ['businessServices', 'computer_services', 'consumer_services', 'diversified_holding', 'general_services', 'shell_companies']
+technology = ['computer_consumerElectronics', 'emerging_technologies', 'internet_online', 'networking', 'semiconductors', 'software']
+
+# Use numpy.select to assign the new sector values
+conditions = [
+    final_df['Industry'].isin(business_consumer_services),
+    final_df['Industry'].isin(technology)
+]
+choices = ['businessConsumer_services', 'technology']
+
+final_df['Sector'] = np.select(conditions, choices, default='Other')
 
 output_path = os.path.join(output_directory, 'output.csv')
 
 final_df.to_csv(output_path, index=False)
+

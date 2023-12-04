@@ -1,0 +1,24 @@
+029 Group SE (Z29) United States XETR
+3M Co. (MMM) United States XN YS
+3M Co. (MMM) United States XETR
+Alfa S.A.B. de C.V. Series A (ALFFF) United States OOTC
+Alliance Global Group Inc. ADR (ALGGY) United States OOTC
+Amincor Inc. Cl A (AMNC) United States OOTC
+Amincor Inc. Cl B Non-Voting (AMNCB) United States OOTC
+Avemio AG (3D6) United States XETR
+Barloworld Ltd. ADR (BRRAY) United States OOTC
+Beijing Enterprises Holdings Ltd. (BJINF) United States OOTC
+Berjaya Corp. Bhd (BRYAF) United States OOTC
+Berkshire Hathaway Inc. Cl A (BRK.A) United States XN YS
+Berkshire Hathaway Inc. Cl B (BRK.B) United States XN YS
+Berkshire Hathaway Inc. Cl B (BRYN) United States XETR
+Bidvest Group Ltd. ADR (BDVSY) United States OOTC
+CITIC Ltd. (CTPCF) United States OOTC
+CITIC Ltd. ADR (CTPCY) United States OOTC
+CK Hutchison Holdings Ltd. (CKHUF) United States OOTC
+CK Hutchison Holdings Ltd. ADR (CKHUY) United States OOTC
+CK Infrastructure Holdings Ltd. (CKISF) United States OOTC
+CK Infrastructure Holdings Ltd. ADR (CKISY) United States OOTC
+Compagnie de L'Odet S.A. (FCODF) United States OOTC
+Dorel Industries Inc. Cl B (DIIBF) United States OOTC
+Dundee Corp. Cl A (DDEJF) United States OOTC

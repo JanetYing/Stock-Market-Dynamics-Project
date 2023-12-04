@@ -1,0 +1,40 @@
+4Cable TV International Inc. (CATV) United States OOTC
+A10 Networks Inc. (ATEN) United States XN YS
+Actelis Networks Inc. (ASNS) United States XN AS
+ADDvantage Technologies Group Inc. (AEY) United States XN AS
+ADTRAN Holdings Inc. (ADTN) United States XN AS
+ADTRAN Holdings Inc. (QH9) United States XETR
+Adtran Networks SE (ADV) United States XETR
+Aerius (AERS) United States OOTC
+Airspan Networks Holdings Inc. (MIMO) United States XASE
+Alvarion Ltd. (ALVRQ) United States OOTC
+Applied Optoelectronics Inc. (AAOI) United States XN AS
+Array Technologies Inc. (ARRY) United States XN AS
+AudioCodes Ltd. (AUDC) United States XN AS
+Aviat Networks Inc. (AVNW) United States XN AS
+Baylin Technologies Inc. (BYLTF) United States OOTC
+Beite Energy Corp. (BTNY) United States OOTC
+BK Technologies Corp. (BKTI) United States XASE
+Blonder Tongue Laboratories Inc. (BDRL) United States OOTC
+BYD Electronic (International) Co. Ltd. (BYDIF) United States OOTC
+BYD Electronic (International) Co. Ltd. ADR (BYDIY) United States OOTC
+CalAmp Corp. (CAMP) United States XN AS
+Cambium Networks Corp. (CMBM) United States XN AS
+CeCors Inc. (CEOS) United States OOTC
+CeoTronics AG (CEK) United States XETR
+Ceragon Networks Ltd. (CRNT) United States XN AS
+Cermetek Microelectronics Inc. (CRMK) United States OOTC
+China TechFaith Wireless Communication Technology Ltd. ADR (CNTFY) United States OOTC
+CIBL Inc. (CIBY) United States OOTC
+Ciena Corp. (CIEN) United States XN YS
+Ciena Corp. (CIE1) United States XETR
+Cisco Systems Inc. (CIS) United States XETR
+Cisco Systems Inc. (CSCO) United States XN AS
+ClearOne Inc. (CLRO) United States XN AS
+Coda Octopus Group Inc. (CODA) United States XN AS
+CommScope Holding Co. Inc. (COMM) United States XN AS
+Comtech Telecommunications Corp. (CMTL) United States XN AS
+Critical Infrastructure Technologies Ltd. (CITLF) United States OOTC
+Cyber Digital Inc. (CYBD) United States OOTC
+Cytta Corp. (CYCA) United States OOTC
+Digi International Inc. (DGII) United States XN AS

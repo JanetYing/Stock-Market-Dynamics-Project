@@ -1,0 +1,123 @@
+10X Capital Venture Acquisition Corp. II Cl A (VCXA) United States XN AS
+10X Capital Venture Acquisition Corp. II Un (VCXAU) United States XN AS
+10X Capital Venture Acquisition Corp. III (VCXB.UT) United States XN YS
+10X Capital Venture Acquisition Corp. III Cl A (VCXB) United States XN YS
+26 Capital Acquisition Corp. (ADERU) United States XN AS
+26 Capital Acquisition Corp. Cl A (ADER) United States XN AS
+468 SPAC II SE (SPV2) United States XETR
+7GC & Co. Holdings Inc. Cl A (VII) United States XN AS
+A SPAC I Acquisition Corp. Cl A (ASCA) United States XN AS
+A SPAC I Acquisition Corp. Rt (ASCAR) United States XN AS
+A SPAC II Acquisition Corp. (ASCB) United States XN AS
+A SPAC II Acquisition Corp. Rt (ASCBR) United States XN AS
+Accretion Acquisition Corp. (ENER) United States XN AS
+Accretion Acquisition Corp. Rt (ENERR) United States XN AS
+Ace Global Business Acquisition Ltd. (ACBA) United States XN AS
+Ace Global Business Acquisition Ltd. (ACBAU) United States XN AS
+Achari Ventures Holdings Corp. I (AVHI) United States XN AS
+Achari Ventures Holdings Corp. I (AVHIU) United States XN AS
+Acri Capital Acquisition Corp. Cl A (ACAC) United States XN AS
+Acri Capital Acquisition Corp. Un (ACACU) United States XN AS
+Acropolis Infrastructure Acquisition Corp. (ACRO.UT) United States XN YS
+Acropolis Infrastructure Acquisition Corp. Cl A (ACRO) United States XN YS
+Adit EdTech Acquisition Corp. (ADEX.UT) United States XASE
+Adit EdTech Acquisition Corp. (ADEX) United States XASE
+Aequi Acquisition Corp. Cl A (ARBG) United States XN AS
+Aetherium Acquisition Corp. (GMFIU) United States XN AS
+Aetherium Acquisition Corp. Cl A (GMFI) United States XN AS
+African Gold Acquisition Corp. (AGAC.UT) United States XN YS
+African Gold Acquisition Corp. Cl A (AGAC) United States XN YS
+AfterNext HealthTech Acquisition Corp. Cl A (AFTR) United States XN YS
+AfterNext HealthTech Acquisition Corp. Un (AFTR.UT) United States XN YS
+Agro Capital Management Corp. (ACMB) United States OOTC
+AIB Acquisition Corp. Cl A (AIB) United States XN AS
+AIB Acquisition Corp. Rt (AIBBR ) United States XN AS
+AiXin Life International Inc. (AIXN ) United States OOTC
+Alchemy Investments Acquisition Corp. 1 (ALCYU) United States XN AS
+Alliance Entertainment Holding Corp. (AENT) United States OOTC
+Alpha Cognition Inc. (ACOGF) United States OOTC
+Alpha Healthcare Acquisition Corp. III (ALPAU) United States XN AS
+Alpha Healthcare Acquisition Corp. III Cl A (ALPA) United States XN AS
+Alpha Partners Technology Merger Corp. (APTMU) United States XN AS
+Alpha Partners Technology Merger Corp. Cl A (APTM) United States XN AS
+Alpha Star Acquisition Corp. (ALSAU) United States XN AS
+Alpha Star Acquisition Corp. (ALSA) United States XN AS
+Alpha Star Acquisition Corp. Rt (ALSAR) United States XN AS
+AlphaTime Acquisition Corp. (ATMCU) United States XN AS
+AlphaTime Acquisition Corp. (ATMC) United States XN AS
+AlphaTime Acquisition Corp. Rt (ATMCR) United States XN AS
+AlphaVest Acquisition Corp. (ATMV) United States XN AS
+AlphaVest Acquisition Corp. (ATMVU) United States XN AS
+AlphaVest Acquisition Corp. Rt (ATMVR) United States XN AS
+Alset Capital Acquisition Corp. (ACAXU) United States XN AS
+Alset Capital Acquisition Corp. Cl A (ACAX) United States XN AS
+Alset Capital Acquisition Corp. Rt (ACAXR) United States XN AS
+ALSP Orchid Acquisition Corp. I Cl A (ALOR) United States XN AS
+ALSP Orchid Acquisition Corp. I Un (ALORU) United States XN AS
+AltC Acquisition Corp. Cl A (ALCC) United States XN YS
+AltEnergy Acquisition Corp. (AEAEU) United States XN AS
+AltEnergy Acquisition Corp. Cl A (AEAE) United States XN AS
+Altimar Acquisition Corp. III Cl A (ATAQ) United States XN YS
+Altitude Acquisition Corp. (ALTUU) United States XN AS
+Altitude Acquisition Corp. Cl A (ALTU) United States XN AS
+America Great Health (AAGH) United States OOTC
+American Acquisition Opportunity Inc. Cl A (AMAO) United States XN AS
+American Green Group Inc. (AMNE) United States OOTC
+Anacortes Mining Corp. (XYZFF) United States OOTC
+Andean Precious Metals Corp. (ANPMF) United States OOTC
+Andretti Acquisition Corp. (WN NR.UT) United States XN YS
+Andretti Acquisition Corp. Cl A (WN NR) United States XN YS
+Anzu Special Acquisition Corp. I (ANZUU) United States XN AS
+Anzu Special Acquisition Corp. I Cl A (ANZU) United States XN AS
+AP Acquisition Corp. Cl A (APCA) United States XN YS
+AP Acquisition Corp. Un (APCA.UT) United States XN YS
+Apeiron Capital Investment Corp. (APNC) United States OOTC
+Apollo Strategic Growth Capital II Cl A (APGB) United States XN YS
+Applied Energetics Inc. (AERG) United States OOTC
+APx Acquisition Corp. I (APXIU) United States XN AS
+APx Acquisition Corp. I Cl A (APXI) United States XN AS
+Aquaron Acquisition Corp. (AQUNU) United States XN AS
+Aquaron Acquisition Corp. (AQU) United States XN AS
+Aquaron Acquisition Corp. Rt (AQUNR) United States XN AS
+Ares Acquisition Corp. (AAC.UT) United States XN YS
+Ares Acquisition Corp. Cl A (AAC) United States XN YS
+Ares Acquisition Corp. II (AACT.UT) United States XN YS
+Ares Acquisition Corp. II Cl A (AACT) United States XN YS
+Arisz Acquisition Corp. Cl A (ARIZ) United States XN AS
+Arisz Acquisition Corp. Rt (ARIZR) United States XN AS
+Armada Acquisition Corp. I (AACI) United States XN AS
+Armada Acquisition Corp. I Un (AACIU) United States XN AS
+Arogo Capital Acquisition Corp. (AOGOU) United States XN AS
+Arogo Capital Acquisition Corp. Cl A (AOGO) United States XN AS
+Arrowroot Acquisition Corp. (ARRWU ) United States XN AS
+Arrowroot Acquisition Corp. Cl A (ARRW) United States XN AS
+Artemis Strategic Investment Corp. (ARTE) United States XN AS
+Artemis Strategic Investment Corp. (ARTEU) United States XN AS
+Arvana Inc. (AVNI) United States OOTC
+ARYA Sciences Acquisition Corp. IV Cl A (ARYD) United States XN AS
+ARYA Sciences Acquisition Corp. V Cl A (ARYE) United States XN AS
+Astika Holdings Inc. (ASKH) United States OOTC
+Athena Consumer Acquisition Corp. (ACAQ.UT) United States XASE
+Athena Consumer Acquisition Corp. (ACAQ) United States XASE
+Athena Technology Acquisition Corp. II (ATEK.UT) United States XN YS
+Athena Technology Acquisition Corp. II Cl A (ATEK) United States XN YS
+Atlantic Coastal Acquisition Corp. (ACAHU) United States XN AS
+Atlantic Coastal Acquisition Corp. Cl A (ACAH) United States XN AS
+Atlantic Coastal Acquisition Corp. II (ACABU) United States XN AS
+Atlantic Coastal Acquisition Corp. II Cl A (ACAB) United States XN AS
+Atlas Resources International Inc. (ALSI) United States OOTC
+Atlas Technology Group Inc. (ATYG) United States OOTC
+Ault Disruptive Technologies Corp. (ADRT) United States XASE
+Ault Disruptive Technologies Corp. Un (ADRT.UT) United States XASE
+Aura FAT Projects Acquisition Corp. (AFARU) United States XN AS
+Aura FAT Projects Acquisition Corp. Cl A (AFAR) United States XN AS
+Aurora Acquisition Corp. (AURCU) United States XN AS
+Aurora Acquisition Corp. Cl A (AURC) United States XN AS
+Aurora Technology Acquisition Corp. Cl A (ATAK) United States XN AS
+Aurora Technology Acquisition Corp. Rt (ATAKR) United States XN AS
+Avidian Gold Corp. (AVGDF) United States OOTC
+AxonPrime Infrastructure Acquisition Corp. (APMIU) United States XN AS
+AxonPrime Infrastructure Acquisition Corp. Cl A (APMI) United States XN AS
+Bannix Acquisition Corp. (BN IX) United States XN AS
+Bannix Acquisition Corp. Rt (BN IXR) United States XN AS
+Banyan Acquisition Corp. (BYN.UT) United States XN YS

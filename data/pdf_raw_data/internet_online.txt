@@ -1,0 +1,46 @@
+3Dshopping.com (THDS) United States OOTC
+Accolade Inc. (ACCD) United States XN AS
+Aerkomm Inc. (AKOM) United States OOTC
+Akamai Technologies Inc. (AKAM) United States XN AS
+Akamai Technologies Inc. (AK3) United States XETR
+Alarm.Com Holdings Inc. (ALRM) United States XN AS
+All Things Mobile Analytic Inc. (ATMH) United States OOTC
+Allegro.eu S.A. (ALEGF) United States OOTC
+Alphabet Inc. Cl A (ABEA) United States XETR
+Alphabet Inc. Cl A (GOOGL) United States XN AS
+Alphabet Inc. Cl C (GOOG) United States XN AS
+AltiGen Communications Inc. (ATGN) United States OOTC
+AMPD Ventures Inc. (AMPDF) United States OOTC
+Angi Inc. (ANGI) United States XN AS
+Apogee Holdings 21 Inc. (APHD) United States OOTC
+AppFolio Inc. (APPF) United States XN AS
+Arista Networks Inc. (ANET) United States XN YS
+Asure Software Inc. (ASUR) United States XN AS
+Athena Bitcoin Global (ABIT) United States OOTC
+Auto Trader Group PLC ADR (ATDRY) United States OOTC
+Avantax Inc. (AVTA) United States XN AS
+Baidu Inc. (BAIDF) United States OOTC
+Baidu Inc. ADR (BIDU) United States XN AS
+Baijiayun Group Ltd. (RTC) United States XN AS
+Balincan USA Inc. (BCNN) United States OOTC
+Baozun Inc. ADR (BZUN) United States XN AS
+BigCommerce Holdings Inc. (BIGC) United States XN AS
+BILL Holdings Inc. (BILL) United States XN YS
+Blend Labs Inc. (BLND) United States XN YS
+Boqii Holding Ltd. ADR (BQ) United States XN YS
+Bright Mountain Media Inc. (BMTM) United States OOTC
+Brightcove Inc. (BCOV) United States XN AS
+CarGurus Inc. Cl A (CARG) United States XN AS
+Cars.com Inc. (CARS) United States XN YS
+Cass Information Systems Inc. (CASS) United States XN AS
+CFN Enterprises Inc. (CNFN) United States OOTC
+China Intelligence Information Systems Inc. (IICN) United States OOTC
+Cloopen Group Holding Ltd. ADR (RAASY) United States OOTC
+Cogent Communications Holdings Inc. (CCOI) United States XN AS
+Consensus Cloud Solutions Inc. (CCSI) United States XN AS
+COOKPAD Inc. (CPADF) United States OOTC
+Coveo Solutions Inc. (CVOSF) United States OOTC
+Creatd Inc. (VOCL) United States OOTC
+Crexendo Inc. (CXDO) United States XN AS
+Data Storage Corp. (DTST) United States XN AS
+Datadog Inc. Cl A (DDOG) United States XN AS
