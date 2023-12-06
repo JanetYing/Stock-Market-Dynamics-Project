@@ -45,7 +45,7 @@ def clean_data(file_names):
         df_filtered = df[df.apply(lambda row: 'United States' in row[0], axis=1)]
         df_filtered.to_csv(output_path, index=False, header=False)
 
-file_names = ['businessServices','computer_services','consumer_services','diversified_holding','general_services' ,'shell_companies', #sector -- business/consumer services
+file_names = ['business_services','computer_services','consumer_services','diversified_holding','general_services' ,'shell_companies', #sector -- business/consumer services
               'computer_consumerElectronics', 'emerging_technologies','internet_online','networking','semiconductors','software' ]#sector -- technology
 convert_pdfs_to_texts(file_names)
 clean_data(file_names)
@@ -79,7 +79,7 @@ def process_files(file_names, input_directory):
 
 final_df = process_files(file_names, input_directory)
 
-business_consumer_services = ['businessServices', 'computer_services', 'consumer_services', 'diversified_holding', 'general_services', 'shell_companies']
+business_consumer_services = ['business_services', 'computer_services', 'consumer_services', 'diversified_holding', 'general_services', 'shell_companies']
 technology = ['computer_consumerElectronics', 'emerging_technologies', 'internet_online', 'networking', 'semiconductors', 'software']
 
 # Use numpy.select to assign the new sector values
