@@ -21,26 +21,28 @@ def initialize_dates():
     event_window_end = event_date + timedelta(days=10)
     return estimation_window_start, estimation_window_end, event_window_start, event_window_end
 
-
 def check_cached_data(ticker, start_date, end_date):
     cache_file_path = os.path.join(cache_directory, f'{ticker}.csv')
     if os.path.exists(cache_file_path):
         try:
-            cached_data = pd.read_csv(cache_file_path, index_col='Date', parse_dates=['Date'])
+            # Reading the CSV without setting the 'Date' column as the index
+            cached_data = pd.read_csv(cache_file_path, parse_dates=['Date'])
         except ValueError as e:
             print(f"Error reading cached file for {ticker}: {e}")
             return None
 
-        if not isinstance(cached_data.index, pd.DatetimeIndex):
-            print(f"Error: Date index for {ticker} is not parsed as datetime.")
+        # Ensure the 'Date' column is parsed as datetime
+        if not pd.api.types.is_datetime64_any_dtype(cached_data['Date']):
+            print(f"Error: 'Date' column for {ticker} is not parsed as datetime.")
             return None
 
-
-        if cached_data.index.isna().any():
-            print(f"Error: NaN values found in date index for {ticker}.")
+        # Check for NaN values in the 'Date' column
+        if cached_data['Date'].isna().any():
+            print(f"Error: NaN values found in 'Date' column for {ticker}.")
             return None
 
-        if cached_data.index.min() <= pd.to_datetime(start_date) and cached_data.index.max() >= pd.to_datetime(end_date):
+        # Checking if the date range in the 'Date' column covers the requested period
+        if cached_data['Date'].min() <= pd.to_datetime(start_date) and cached_data['Date'].max() >= pd.to_datetime(end_date):
             print(f"Cache hit: Data for {ticker} is available in the cache and covers the date range from {start_date} to {end_date}.")
             return cached_data
         else:
@@ -49,6 +51,7 @@ def check_cached_data(ticker, start_date, end_date):
     else:
         print(f"No cached data found for {ticker}.")
         return None
+
 
 
 def fetch_stock_data(ticker, start_date, end_date):
@@ -93,6 +96,7 @@ def rename_and_merge_dataframes(combined_data, market_data):
         'marketCap': 'stock_market_cap'
     }).rename_axis('date')
     market_data = market_data.rename_axis('date')
+    combined_data = combined_data.reset_index().rename(columns={'index': 'date'})
     return pd.merge(combined_data, market_data, left_index=True, right_index=True, how='left')
 
 def load_sp500_data():
