@@ -4,10 +4,7 @@ import statsmodels.api as sm
 import numpy as np
 
 
-
-
-
-# Utility Functions
+# Utility Functions,will be imported into shiny app for interative plotting
 def calculate_stock_and_market_return(data):
     data['stock_return'] = data.groupby('ticker')['stock_adj_close'].pct_change()
     data['market_return'] = data['market_adj_close'].pct_change()
@@ -18,17 +15,13 @@ def estimate_parameters(ticker, data):
     if len(stock_data) < 2: 
         return np.nan, np.nan
     
-    # Ensure that 'market_return' exists in stock_data
     if 'market_return' not in stock_data.columns:
         raise KeyError("Column 'market_return' not found in stock_data.")
 
-    # Adding a constant to the independent variable for OLS regression
     X = sm.add_constant(stock_data['market_return'])
 
     model = sm.OLS(stock_data['stock_return'], X).fit()
     return model.params
-
-
 
 def calculate_expected_return(row, params):
     alpha, beta = params.get(row['ticker'], (np.nan, np.nan))

@@ -5,11 +5,11 @@ import json
 from datetime import datetime, timedelta
 
 # Paths
-path = 'C:/Users/Janet/OneDrive - The University of Chicago/Data_policy/final-project-janet'
+path = r'C:/Users/Janet/OneDrive - The University of Chicago/Data_policy/final-project-janet'
 data_path = r'C:\Users\Janet\OneDrive - The University of Chicago\Data_policy\final-project-janet\data'
 cache_directory = os.path.join(path, 'cache')
 file_name = 'processed_text.csv'
-file_path = os.path.join(path, data_path)
+file_path = os.path.join(data_path, file_name)
 os.makedirs(cache_directory, exist_ok=True)  # Create cache directory if it doesn't exist
 df = pd.read_csv(file_path)
 
@@ -21,21 +21,37 @@ def initialize_dates():
     event_window_end = event_date + timedelta(days=10)
     return estimation_window_start, estimation_window_end, event_window_start, event_window_end
 
+
 def check_cached_data(ticker, start_date, end_date):
-    """
-    Check if the data for a given ticker is available in the cache.
-    """
     cache_file_path = os.path.join(cache_directory, f'{ticker}.csv')
     if os.path.exists(cache_file_path):
-        cached_data = pd.read_csv(cache_file_path, index_col='Date', parse_dates=True)
-        if cached_data.index.min() <= start_date and cached_data.index.max() >= end_date:
+        try:
+            cached_data = pd.read_csv(cache_file_path, index_col='Date', parse_dates=['Date'])
+        except ValueError as e:
+            print(f"Error reading cached file for {ticker}: {e}")
+            return None
+
+        if not isinstance(cached_data.index, pd.DatetimeIndex):
+            print(f"Error: Date index for {ticker} is not parsed as datetime.")
+            return None
+
+
+        if cached_data.index.isna().any():
+            print(f"Error: NaN values found in date index for {ticker}.")
+            return None
+
+        if cached_data.index.min() <= pd.to_datetime(start_date) and cached_data.index.max() >= pd.to_datetime(end_date):
+            print(f"Cache hit: Data for {ticker} is available in the cache and covers the date range from {start_date} to {end_date}.")
             return cached_data
-    return None
+        else:
+            print(f"Cache miss: Data for {ticker} is available but does not cover the entire date range from {start_date} to {end_date}.")
+            return None
+    else:
+        print(f"No cached data found for {ticker}.")
+        return None
+
 
 def fetch_stock_data(ticker, start_date, end_date):
-    """
-    Fetch stock data, using cached data if available.
-    """
     cached_data = check_cached_data(ticker, start_date, end_date)
     if cached_data is not None:
         return cached_data
@@ -81,7 +97,7 @@ def rename_and_merge_dataframes(combined_data, market_data):
 
 def load_sp500_data():
     json_file_name = 'sp500_constituents.json'
-    json_file_path = os.path.join(sp500_path, json_file_name)
+    json_file_path = os.path.join(data_path, json_file_name)
     with open(json_file_path, 'r') as file:
         sp500_data = json.load(file)
     return sp500_data.get("2018/06/20", [])
@@ -109,7 +125,6 @@ def main(df):
     final_data = pd.merge(merged_data, df_no_duplicates, on='ticker', how='left')
     final_data.set_index('date', inplace=True)
 
-    # Save final data to the specified path
     output_file_path = os.path.join(data_path, 'combined_stock_data.csv')
     final_data.to_csv(output_file_path, index=False)
     return final_data

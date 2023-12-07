@@ -8,7 +8,14 @@ from datetime import datetime, timedelta
 import matplotlib.dates as mdates
 import statsmodels.api as sm
 import sys
+import os
+
 sys.path.append(r'C:\Users\Janet\OneDrive - The University of Chicago\Data_policy\final-project-janet')
+path = 'C:/Users/Janet/OneDrive - The University of Chicago/Data_policy/final-project-janet/data'
+file_name = 'combined_stock_data2.csv'
+file_path = os.path.join(path, file_name)
+stock_data = pd.read_csv(file_path)
+
 
 from analysis import (
     calculate_stock_and_market_return,
@@ -32,18 +39,13 @@ app_ui = ui.page_fluid(
         ui.row(
         ui.column(6, 
                   ui.input_select(id='xaxis', 
-                                  label='Please select the x ', 
+                                  label='Please select your variable for x axis', 
                                   choices=['Industry', 'Exchange'])),
         ui.column(6, 
                   ui.input_select(id='yaxis', 
-                                  label='Please select the y', 
+                                  label='Please select your variable for y axis', 
                                   choices=['Stock Price', 'Market Capitalization', 'Volume']))
         ),
-    #     ui.row(
-    #     ui.column(6, 
-    #               ui.output_text('text'),
-    #     offset=6)
-    # ),
     ui.row(
         ui.column(12, 
                   ui.output_plot('plot1'), 
@@ -69,11 +71,6 @@ app_ui = ui.page_fluid(
 
 
 def server(input, output, session):
-    # @reactive.Calc
-    # def get_data():
-    #     df = pd.read_csv('combined_stock_data.csv')
-        
-    #     return df[df['Year'] == int(input.year())]
     
     @output
     @render.image
@@ -84,21 +81,11 @@ def server(input, output, session):
             'height': 'auto'  
         }
         
-    # @output
-    # @render.text
-    # def text():
-    #     text_year = int(input.year())
-    #     if text_year == 2005:
-    #         return "The selected year is a BRAC year"
-    #     else:
-    #         return "The selected year is not a BRAC year"
 
 
     @output
     @render.plot
     def plot1(log_scale='auto'):
-
-        df = pd.read_csv('combined_stock_data.csv')
         
         x_axis_input = input.xaxis()
         y_axis_input = input.yaxis()
@@ -118,37 +105,38 @@ def server(input, output, session):
 
 
         palette_column = hue if x_axis_input == 'Industry' else x_axis
-        palette = sns.color_palette("pastel", len(df[palette_column].unique()))
-        palette = dict(zip(df[palette_column].unique(), palette))
+        palette = sns.color_palette("pastel", len(stock_data[palette_column].unique()))
+        palette = dict(zip(stock_data[palette_column].unique(), palette))
 
         
         plt.figure(figsize=(15, 8))
-        ax = sns.boxplot(x=x_axis, y=y_axis, hue=hue, data=df, palette=palette, dodge=False,showfliers=False)
+        ax = sns.boxplot(x=x_axis, y=y_axis, hue=hue, data=stock_data, palette=palette, dodge=False,showfliers=False)
         if x_axis_input == 'Industry': # Format the x-axis labels to be more readable
             ax.set_xticklabels([label.get_text().replace('_', ' ').title() for label in ax.get_xticklabels()])
         
         plt.title(f'Box-and-Whisker Plot of {y_axis_input.capitalize()} by {x_axis_input.capitalize()}')
         plt.ylabel(y_axis_input.capitalize())
         plt.xlabel(x_axis_input.capitalize())
-        ax.xaxis.grid(False) # unfinished
+        ax.xaxis.grid(False) 
         ax.yaxis.grid(True)
         plt.xticks(rotation=65)
         
         # Automatically determine y-axis scale for readability
         if log_scale == 'auto':
-            if df[y_axis].min() > 0: 
-                data_range = np.log10(df[y_axis].max()) - np.log10(df[y_axis].min())
-                if data_range > 3:  # Use a log scale if data range is large
+            if stock_data[y_axis].min() > 0: 
+                data_range = np.log10(stock_data[y_axis].max()) - np.log10(stock_data[y_axis].min())
+                if data_range > 3:  # Use a log scale if data range is large for readability
                     ax.set_yscale('log')
             else:
                 # Add a small constant to zero values if present to use log scale
-                df[y_axis] += df[y_axis].eq(0)
+                stock_data[y_axis] += stock_data[y_axis].eq(0)
                 ax.set_yscale('log')
-                ax.set_ylim(bottom=1)  # Set the bottom of the y-axis to 1 to avoid negative values
+                ax.set_ylim(bottom=1)  # Set the bottom of the y-axis to 1 to avoid negative values brought my symlog
+                # since stock prices and volumn dont have negative 
         elif log_scale:
             ax.set_yscale('log')
 
-        if df[y_axis].max() < 10000:
+        if stock_data[y_axis].max() < 10000:
             ax.ticklabel_format(style='plain', axis='y')
             
         if hue:
@@ -206,7 +194,6 @@ def server(input, output, session):
         def plot_grouped_event_study(grouped_data, study_type, event_date, group_by):
             column = 'volume_difference' if study_type == 'volume' else 'abnormal_return'
 
-            # Create figure and axes using plt.subplots()
             fig, ax = plt.subplots(figsize=(15, 6) if study_type == 'volume' else (10, 6))
 
             # Define sector names for nicer labeling
@@ -214,7 +201,7 @@ def server(input, output, session):
                             'technology': 'Technology'}
 
             for group, group_data in grouped_data.items():
-                # Convert the dates to a number format and find the relative date difference
+                # Use relative date difference for improving readability
                 group_data['date_num'] = mdates.date2num(pd.to_datetime(group_data['date']))
                 event_date_num = mdates.date2num(event_date)
                 group_data['days_from_event'] = (group_data['date_num'] - event_date_num).round()
@@ -223,7 +210,6 @@ def server(input, output, session):
 
                 label = sector_names.get(group, group) if group_by == 'sector' else group
 
-                # Plot the data on the axes object
                 sns.lineplot(data=mean_data, x=mean_data.index, y='mean', marker='o', label=label, ax=ax)
 
             ax.axhline(0, color='grey', linestyle='--')
@@ -236,13 +222,12 @@ def server(input, output, session):
             plt.tight_layout()
 
             return ax
-        stock_data = pd.read_csv('combined_stock_data.csv')
+        stock_data = pd.read_csv(file_path)
 
         stock_data['date'] = pd.to_datetime(stock_data['date'])
 
         event_date = datetime(2018, 6, 28)
 
-        # Ensure the 'date' column is of datetime type in your DataFrame
         stock_data = calculate_stock_and_market_return(stock_data)
 
         grouped_price_event_data = grouped_event_study(stock_data, study_type, event_date, group_by)

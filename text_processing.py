@@ -8,7 +8,7 @@ import PyPDF2
 OUTPUT_DIRECTORY = r'C:\Users\Janet\OneDrive - The University of Chicago\Data_policy\final-project-janet\data'
 INPUT_DIRECTORY = r'C:\Users\Janet\OneDrive - The University of Chicago\Data_policy\final-project-janet\data\pdf_raw_data'
 FILE_NAMES = ['business_services', 'computer_services', 'consumer_services', 'diversified_holding', 'general_services', 'shell_companies',
-              'computer_consumer_electronics', 'emerging_technologies', 'internet_online', 'networking', 'semiconductors', 'software']
+              'consumer_electronics', 'emerging_technologies', 'internet_online', 'networking', 'semiconductors', 'software']
 
 def convert_pdfs_to_texts(file_names, input_directory):
     """Converts a list of PDF files to text files."""
@@ -53,7 +53,7 @@ def process_files(file_names, input_directory):
 def assign_sectors(df):
     """Assigns sectors to the DataFrame based on industry."""
     business_consumer_services = ['business_services', 'computer_services', 'consumer_services', 'diversified_holding', 'general_services', 'shell_companies']
-    technology = ['computer_consumer_electronics', 'emerging_technologies', 'internet_online', 'networking', 'semiconductors', 'software']
+    technology = ['consumer_electronics', 'emerging_technologies', 'internet_online', 'networking', 'semiconductors', 'software']
 
     conditions = [df['industry'].isin(business_consumer_services), df['industry'].isin(technology)]
     choices = ['businessConsumer_services', 'technology']

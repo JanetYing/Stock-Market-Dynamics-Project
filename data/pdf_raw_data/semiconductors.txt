@@ -1,40 +1,80 @@
-5N Plus Inc. (FPLSF) United States OOTC
-ACM Research Inc. Cl A (ACMR) United States XN AS
-Adeia Inc. (ADEA) United States XN AS
-Advanced Energy Industries Inc. (AEIS) United States XN AS
-Advanced Micro Devices Inc. (AMD) United States XETR
-Advanced Micro Devices Inc. (AMD) United States XN AS
-Advantest Corp. ADR (ATEYY) United States OOTC
-Aehr Test Systems (AEHR) United States XN AS
-Aixtron SE (AIXXF) United States OOTC
-Aixtron SE (AIXA) United States XETR
-Aixtron SE ADR (AIIXY) United States OOTC
-Akoustis Technologies Inc. (AKTS) United States XN AS
-Allegro MicroSystems Inc. (ALGM) United States XN AS
-Alpha & Omega Semiconductor Inc. (AOSL) United States XN AS
-Alphawave IP Group PLC (AWE VF) United States OOTC
-Ambarella Inc. (AMBA) United States XN AS
-American Aires Inc. (AAIRF) United States OOTC
-Amkor Technology Inc. (AMKR) United States XN AS
-ams-OSRAM AG (AUKUF) United States OOTC
-ams-OSRAM AG ADR (AMSSY) United States OOTC
-Amtech Systems Inc. (ASYS) United States XN AS
-Analog Devices Inc. (ADI) United States XN AS
-Applied Materials Inc. (AP2) United States XETR
-Applied Materials Inc. (AMAT) United States XN AS
-Arteris Inc. (AIP) United States XN AS
-ASE Technology Holding Co. Ltd. ADR (ASX) United States XN YS
-ASM International N.V. (ASMIY) United States OOTC
-ASM International N.V. (ASMXF) United States OOTC
-ASML Holding N.V. (ASME) United States XETR
-ASML Holding N.V. (ASMLF) United States OOTC
-ASML Holding N.V. (ASML) United States XN AS
-ASMPT Ltd. ADR (ASMVY) United States OOTC
-Atomera Inc. (ATOM) United States XN AS
-Axcelis Technologies Inc. (ACLS) United States XN AS
-AXT Inc. (AXTI) United States XN AS
-Azenta Inc. (AZTA) United States XN AS
-B.O.S. Better Online Solutions Ltd. (BOSC) United States XN AS
-BE Semiconductor Industries N.V. (BESVF) United States OOTC
-BE Semiconductor Industries N.V. (BSI) United States XETR
-BE Semiconductor Industries N.V. ADR (BESIY) United States OOTC
+"5N Plus Inc. (FPLSF) United States OOTC
+"
+"ACM Research Inc. Cl A (ACMR) United States XN AS
+"
+"Adeia Inc. (ADEA) United States XN AS
+"
+"Advanced Energy Industries Inc. (AEIS) United States XN AS
+"
+"Advanced Micro Devices Inc. (AMD) United States XETR
+"
+"Advanced Micro Devices Inc. (AMD) United States XN AS
+"
+"Advantest Corp. ADR (ATEYY) United States OOTC
+"
+"Aehr Test Systems (AEHR) United States XN AS
+"
+"Aixtron SE (AIXXF) United States OOTC
+"
+"Aixtron SE (AIXA) United States XETR
+"
+"Aixtron SE ADR (AIIXY) United States OOTC
+"
+"Akoustis Technologies Inc. (AKTS) United States XN AS
+"
+"Allegro MicroSystems Inc. (ALGM) United States XN AS
+"
+"Alpha & Omega Semiconductor Inc. (AOSL) United States XN AS
+"
+"Alphawave IP Group PLC (AWE VF) United States OOTC
+"
+"Ambarella Inc. (AMBA) United States XN AS
+"
+"American Aires Inc. (AAIRF) United States OOTC
+"
+"Amkor Technology Inc. (AMKR) United States XN AS
+"
+"ams-OSRAM AG (AUKUF) United States OOTC
+"
+"ams-OSRAM AG ADR (AMSSY) United States OOTC
+"
+"Amtech Systems Inc. (ASYS) United States XN AS
+"
+"Analog Devices Inc. (ADI) United States XN AS
+"
+"Applied Materials Inc. (AP2) United States XETR
+"
+"Applied Materials Inc. (AMAT) United States XN AS
+"
+"Arteris Inc. (AIP) United States XN AS
+"
+"ASE Technology Holding Co. Ltd. ADR (ASX) United States XN YS
+"
+"ASM International N.V. (ASMIY) United States OOTC
+"
+"ASM International N.V. (ASMXF) United States OOTC
+"
+"ASML Holding N.V. (ASME) United States XETR
+"
+"ASML Holding N.V. (ASMLF) United States OOTC
+"
+"ASML Holding N.V. (ASML) United States XN AS
+"
+"ASMPT Ltd. ADR (ASMVY) United States OOTC
+"
+"Atomera Inc. (ATOM) United States XN AS
+"
+"Axcelis Technologies Inc. (ACLS) United States XN AS
+"
+"AXT Inc. (AXTI) United States XN AS
+"
+"Azenta Inc. (AZTA) United States XN AS
+"
+"B.O.S. Better Online Solutions Ltd. (BOSC) United States XN AS
+"
+"BE Semiconductor Industries N.V. (BESVF) United States OOTC
+"
+"BE Semiconductor Industries N.V. (BSI) United States XETR
+"
+"BE Semiconductor Industries N.V. ADR (BESIY) United States OOTC
+"
