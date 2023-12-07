@@ -12,7 +12,7 @@ import os
 
 sys.path.append(r'C:\Users\Janet\OneDrive - The University of Chicago\Data_policy\final-project-janet')
 path = 'C:/Users/Janet/OneDrive - The University of Chicago/Data_policy/final-project-janet/data'
-file_name = 'combined_stock_data2.csv'
+file_name = 'combined_stock_data.csv'
 file_path = os.path.join(path, file_name)
 stock_data = pd.read_csv(file_path)
 
