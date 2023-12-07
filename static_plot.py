@@ -68,3 +68,5 @@ def plot_stacked_exchange_industry():
     plt.show()
 
 plot_stacked_exchange_industry()
+
+# It meet my expectation of the characteristics of each exchange
