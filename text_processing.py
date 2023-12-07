@@ -11,7 +11,6 @@ FILE_NAMES = ['business_services', 'computer_services', 'consumer_services', 'di
               'consumer_electronics', 'emerging_technologies', 'internet_online', 'networking', 'semiconductors', 'software']
 
 def convert_pdfs_to_texts(file_names, input_directory):
-    """Converts a list of PDF files to text files."""
     for file_name in file_names:
         path = os.path.join(input_directory, f"{file_name}.pdf")
         output_path = os.path.join(input_directory, f"{os.path.splitext(file_name)[0]}.txt")
@@ -22,7 +21,6 @@ def convert_pdfs_to_texts(file_names, input_directory):
                 text_file.write(page.extract_text() + '\n')
 
 def clean_data(file_names, input_directory):
-    """Cleans text data in specified files."""
     for file_name in file_names:
         path = os.path.join(input_directory, f"{file_name}.txt")
 
@@ -34,7 +32,6 @@ def clean_data(file_names, input_directory):
         df_filtered.to_csv(path, index=False, header=False)
 
 def extract_data_to_dataframe(file_path, input_directory):
-    """Extracts data from a text file and returns a DataFrame."""
     path = os.path.join(input_directory, f"{file_path}.txt")
     data = []
 
@@ -47,11 +44,9 @@ def extract_data_to_dataframe(file_path, input_directory):
     return pd.DataFrame(data)
 
 def process_files(file_names, input_directory):
-    """Processes a list of files and concatenates their data into a single DataFrame."""
     return pd.concat([extract_data_to_dataframe(file_name, input_directory) for file_name in file_names], ignore_index=True)
 
 def assign_sectors(df):
-    """Assigns sectors to the DataFrame based on industry."""
     business_consumer_services = ['business_services', 'computer_services', 'consumer_services', 'diversified_holding', 'general_services', 'shell_companies']
     technology = ['consumer_electronics', 'emerging_technologies', 'internet_online', 'networking', 'semiconductors', 'software']
 
@@ -60,7 +55,6 @@ def assign_sectors(df):
     df['sector'] = np.select(conditions, choices, default='Other')
 
 def main():
-    """Main function to execute the data processing workflow."""
     convert_pdfs_to_texts(FILE_NAMES, INPUT_DIRECTORY)
     clean_data(FILE_NAMES, INPUT_DIRECTORY)
     final_df = process_files(FILE_NAMES, INPUT_DIRECTORY)

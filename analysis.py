@@ -4,10 +4,11 @@ import statsmodels.api as sm
 import numpy as np
 
 
-# Utility Functions,will be imported into shiny app for interative plotting
+# Utility Functions,will be imported into shiny app for interative plotting, 
+# further analysis is in shiny app
 def calculate_stock_and_market_return(data):
     data['stock_return'] = data.groupby('ticker')['stock_adj_close'].pct_change()
-    data['market_return'] = data['market_adj_close'].pct_change()
+    data['market_return'] = data['market_adj_close'].dropna().pct_change()
     return data
 
 def estimate_parameters(ticker, data):

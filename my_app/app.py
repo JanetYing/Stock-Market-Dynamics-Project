@@ -10,12 +10,11 @@ import statsmodels.api as sm
 import sys
 import os
 
-sys.path.append(r'C:\Users\Janet\OneDrive - The University of Chicago\Data_policy\final-project-janet')
 path = 'C:/Users/Janet/OneDrive - The University of Chicago/Data_policy/final-project-janet/data'
 file_name = 'combined_stock_data.csv'
 file_path = os.path.join(path, file_name)
 stock_data = pd.read_csv(file_path)
-
+sys.path.append(r'C:\Users\Janet\OneDrive - The University of Chicago\Data_policy\final-project-janet')
 
 from analysis import (
     calculate_stock_and_market_return,
@@ -24,7 +23,6 @@ from analysis import (
     calculate_abnormal_return,
     calculate_volume_difference,
 )
-
 
 app_ui = ui.page_fluid(
     ui.row(
@@ -132,7 +130,7 @@ def server(input, output, session):
                 stock_data[y_axis] += stock_data[y_axis].eq(0)
                 ax.set_yscale('log')
                 ax.set_ylim(bottom=1)  # Set the bottom of the y-axis to 1 to avoid negative values brought my symlog
-                # since stock prices and volumn dont have negative 
+                                       # since stock prices and volumn dont have negative 
         elif log_scale:
             ax.set_yscale('log')
 
@@ -143,6 +141,13 @@ def server(input, output, session):
             plt.legend(title=hue.capitalize())
     
         return ax
+    #Interpretation of box plot:
+    #The technology sector generally shows higher market capitalizations, as seen in the placement of the 
+    # boxes and whiskers on the y-axis.The boxes in the technology sector are also taller (indicating a 
+    # larger IQR), which suggests there is greater variability within these industries. 
+
+    #The technology sector, particularly industries like Consumer Electronics and Software, 
+    #tends to have higher valuations, which is consistent with the growth and scale of tech companies in the market.
     
     @output
     @render.plot
@@ -232,10 +237,9 @@ def server(input, output, session):
 
         grouped_price_event_data = grouped_event_study(stock_data, study_type, event_date, group_by)
         plot_grouped_event_study(grouped_price_event_data, study_type, event_date, group_by)
+
+#Interpretation of interative plot 2 see write up file key finding part.
                 
-
-
-
 
 app = App(app_ui, server)
 

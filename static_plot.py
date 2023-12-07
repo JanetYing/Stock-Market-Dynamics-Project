@@ -11,9 +11,6 @@ df = pd.read_csv(file_path)
 
 
 def plot_correlation_heatmap(df, columns):
-
-
-    # Select the relevant columns
     selected_data = df[columns]
 
     # Compute the correlation matrix
@@ -24,12 +21,10 @@ def plot_correlation_heatmap(df, columns):
     correlation_matrix.columns = formatted_columns
     correlation_matrix.index = formatted_columns
 
-    # Plot the heatmap
     plt.figure(figsize=(10, 10))
     sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f')
     plt.title('Heatmap of Stock Market Data Correlations')
-    plt.xticks(rotation=45)
-    plt.yticks(rotation=45)
+    plt.xticks(rotation=60)
     plt.show()
 
 plot_correlation_heatmap(df, ['stock_open', 'stock_high', 'stock_low', 'stock_close', 
@@ -61,6 +56,7 @@ def plot_stacked_exchange_industry():
     
     plt.title('Percentage Distribution of Stocks by Industry within Each Exchange')
     plt.xlabel('Exchange')
+    plt.xticks(rotation=45)
     plt.ylabel('Percentage')
     plt.legend(title='Industry', bbox_to_anchor=(1.05, 1), loc='upper left')
     plt.tight_layout()
@@ -69,4 +65,5 @@ def plot_stacked_exchange_industry():
 
 plot_stacked_exchange_industry()
 
-# It meet my expectation of the characteristics of each exchange
+# This plot meet my expectation of the characteristics of each exchange, 
+# and how each industry dsitributed within exchange
