@@ -4,6 +4,19 @@ import seaborn as sns
 from datetime import datetime
 import matplotlib.pyplot as plt
 import numpy as np
+from datetime import datetime, timedelta
+import matplotlib.dates as mdates
+import statsmodels.api as sm
+import sys
+sys.path.append(r'C:\Users\Janet\OneDrive - The University of Chicago\Data_policy\final-project-janet')
+
+from analysis import (
+    calculate_stock_and_market_return,
+    estimate_parameters,
+    calculate_expected_return,
+    calculate_abnormal_return,
+    calculate_volume_difference,
+)
 
 
 app_ui = ui.page_fluid(
@@ -16,27 +29,12 @@ app_ui = ui.page_fluid(
                   ui.h1('PPHA 30538 Autumn 2023'),
                   ui.hr())
     ),
-    # ui.row(
-    #     ui.column(4, 
-    #               ui.input_select(id='aspect', 
-    #                               label='Please select the aspect of event study you want to focus on: ', 
-    #                               choices=['Stock Price', 'Market Capitalization','Volume'])),
-    #     ui.column(4, 
-    #               ui.input_select(id='quantile', 
-    #                               label='What percentile of'+ {input.aspect()}+'you want to work on', 
-    #                               choices=['top percentil', 'middle percentile', 'low percentile'],
-    #                               multiple=True))
-    #     ui.column(4, 
-    #         ui.input_select(id='subsection', 
-    #                         label='How do you want to categorize them?', 
-    #                         choices=['industry', 'sector']))
-    # ),
         ui.row(
-        ui.column(4, 
+        ui.column(6, 
                   ui.input_select(id='xaxis', 
                                   label='Please select the x ', 
                                   choices=['Industry', 'Exchange'])),
-        ui.column(4, 
+        ui.column(6, 
                   ui.input_select(id='yaxis', 
                                   label='Please select the y', 
                                   choices=['Stock Price', 'Market Capitalization', 'Volume']))
@@ -48,7 +46,22 @@ app_ui = ui.page_fluid(
     # ),
     ui.row(
         ui.column(12, 
-                  ui.output_plot('sh'), 
+                  ui.output_plot('plot1'), 
+                  align='center')
+    ),
+    ui.row(
+        ui.column(6, 
+                  ui.input_select(id='aspect', 
+                                  label='Please select the aspect of event study you want to focus on: ', 
+                                  choices=['Stock Price','Volume'])),
+        ui.column(6, 
+                  ui.input_select(id='categorize', 
+                                  label='How do you want to categorize them?', 
+                                  choices=['Exchange', 'Sector','Industry']))
+    ),
+    ui.row(
+        ui.column(12, 
+                  ui.output_plot('plot2'), 
                   align='center')
     )
 )
@@ -83,7 +96,7 @@ def server(input, output, session):
 
     @output
     @render.plot
-    def sh(log_scale='auto'):
+    def plot1(log_scale='auto'):
 
         df = pd.read_csv('combined_stock_data.csv')
         
@@ -142,6 +155,101 @@ def server(input, output, session):
             plt.legend(title=hue.capitalize())
     
         return ax
+    
+    @output
+    @render.plot
+    def plot2():
+        input_study_type = input.aspect()
+        input_group_by = input.categorize()
+
+        # Mapping of user-friendly input values to DataFrame column names
+        input_to_column = {
+            'Stock Price': 'price',
+            'Volume': 'volume',
+            'Sector': 'sector',
+            'Exchange': 'exchange',
+            'Industry':'industry'
+        }
+
+        study_type = input_to_column.get(input_study_type, input_study_type)
+        group_by = input_to_column.get(input_group_by, input_group_by)
+
+
+        def grouped_event_study(data, study_type, event_date, group_by, window_size=10, estimation_window_size=30):
+            start_date = event_date - timedelta(days=window_size)
+            end_date = event_date + timedelta(days=window_size)
+            estimation_start_date = start_date - timedelta(days=estimation_window_size)
+            estimation_end_date = start_date - timedelta(days=1)
+
+            grouped_event_data = {}
+            for group in data[group_by].unique():
+                group_data = data[(data['date'] >= start_date) & (data['date'] <= end_date) & (data[group_by] == group)].copy()
+                group_estimation_data = data[(data['date'] >= estimation_start_date) & (data['date'] <= estimation_end_date) & (data[group_by] == group)].copy()
+
+                if group_data.empty:
+                    continue
+
+                if study_type == 'price':
+                    parameters = {ticker: estimate_parameters(ticker, group_data) for ticker in group_data['ticker'].unique()}
+                    group_data = calculate_abnormal_return(group_data, parameters)
+
+                elif study_type == 'volume':
+                    group_data = calculate_volume_difference(group_data, group_estimation_data)
+
+                grouped_event_data[group] = group_data
+
+            return grouped_event_data
+
+
+
+
+        def plot_grouped_event_study(grouped_data, study_type, event_date, group_by):
+            column = 'volume_difference' if study_type == 'volume' else 'abnormal_return'
+
+            # Create figure and axes using plt.subplots()
+            fig, ax = plt.subplots(figsize=(15, 6) if study_type == 'volume' else (10, 6))
+
+            # Define sector names for nicer labeling
+            sector_names = {'businessConsumer_services': 'Business Consumer Services',
+                            'technology': 'Technology'}
+
+            for group, group_data in grouped_data.items():
+                # Convert the dates to a number format and find the relative date difference
+                group_data['date_num'] = mdates.date2num(pd.to_datetime(group_data['date']))
+                event_date_num = mdates.date2num(event_date)
+                group_data['days_from_event'] = (group_data['date_num'] - event_date_num).round()
+
+                mean_data = group_data.groupby('days_from_event')[column].mean().to_frame('mean')
+
+                label = sector_names.get(group, group) if group_by == 'sector' else group
+
+                # Plot the data on the axes object
+                sns.lineplot(data=mean_data, x=mean_data.index, y='mean', marker='o', label=label, ax=ax)
+
+            ax.axhline(0, color='grey', linestyle='--')
+            ax.axvline(0, color='red', lw=1, ls='--')  # Zero now represents the event date
+            ax.set_title(f'Average {("Abnormal Returns" if study_type == "price" else "Volume Difference")} across {group_by.capitalize()} around the CCPA Signing')
+            ax.set_xlabel('Days from CCPA Signing')
+            ax.set_ylabel(f'Average {("Abnormal Return" if study_type == "price" else "Volume Difference")}')
+            ax.tick_params(axis='x', rotation=45)
+            ax.legend(title=group_by.capitalize())
+            plt.tight_layout()
+
+            return ax
+        stock_data = pd.read_csv('combined_stock_data.csv')
+
+        stock_data['date'] = pd.to_datetime(stock_data['date'])
+
+        event_date = datetime(2018, 6, 28)
+
+        # Ensure the 'date' column is of datetime type in your DataFrame
+        stock_data = calculate_stock_and_market_return(stock_data)
+
+        grouped_price_event_data = grouped_event_study(stock_data, study_type, event_date, group_by)
+        plot_grouped_event_study(grouped_price_event_data, study_type, event_date, group_by)
+                
+
+
 
 
 app = App(app_ui, server)
