@@ -8,10 +8,9 @@ import json
 from scipy.stats import t
 from datetime import datetime, timedelta
 
-
-path = 'C:/Users/Janet/OneDrive - The University of Chicago/Data_policy/final-project-janet/data'
+path = os.path.join(os.getcwd(), 'data')
 file_name = 'processed_text.csv'
-file_path = os.path.join(path, file_name)
+file_path = os.path.join(os.getcwd(), 'data', file_name)
 df = pd.read_csv(file_path)
 
 

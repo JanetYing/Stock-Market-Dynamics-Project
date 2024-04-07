@@ -10,11 +10,17 @@ import statsmodels.api as sm
 import sys
 import os
 
-path = 'C:/Users/Janet/OneDrive - The University of Chicago/Data_policy/final-project-janet/data'
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+if project_root not in sys.path:
+    sys.path.append(project_root)
+
+data_directory = 'data'
+path = os.path.join(project_root, data_directory)
 file_name = 'combined_stock_data.csv'
 file_path = os.path.join(path, file_name)
+
 stock_data = pd.read_csv(file_path)
-sys.path.append(r'C:\Users\Janet\OneDrive - The University of Chicago\Data_policy\final-project-janet')
 
 from analysis import (
     calculate_stock_and_market_return,

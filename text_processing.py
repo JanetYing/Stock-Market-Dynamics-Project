@@ -5,8 +5,9 @@ import numpy as np
 import PyPDF2
 
 # Global Constants
-OUTPUT_DIRECTORY = r'C:\Users\Janet\OneDrive - The University of Chicago\Data_policy\final-project-janet\data'
-INPUT_DIRECTORY = r'C:\Users\Janet\OneDrive - The University of Chicago\Data_policy\final-project-janet\data\pdf_raw_data'
+base_path = os.path.dirname(os.path.realpath(__file__))
+OUTPUT_DIRECTORY = os.path.join(base_path, 'data')
+INPUT_DIRECTORY = os.path.join(base_path, 'data', 'pdf_raw_data')
 FILE_NAMES = ['business_services', 'computer_services', 'consumer_services', 'diversified_holding', 'general_services', 'shell_companies',
               'consumer_electronics', 'emerging_technologies', 'internet_online', 'networking', 'semiconductors', 'software']
 

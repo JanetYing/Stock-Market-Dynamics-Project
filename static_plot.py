@@ -3,9 +3,9 @@ import pandas as pd
 import seaborn as sns
 import os
 
-path = 'C:/Users/Janet/OneDrive - The University of Chicago/Data_policy/final-project-janet/data'
+
 file_name = 'combined_stock_data.csv'
-file_path = os.path.join(path, file_name)
+file_path = os.path.join(os.getcwd(), 'data', file_name)
 df = pd.read_csv(file_path)
 
 
